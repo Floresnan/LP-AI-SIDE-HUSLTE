@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Side Hustle Blueprint — Make $1,000–$5,000/Month With AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #07070F;
+  --surface:   #0E0E1A;
+  --card:      #12121E;
+  --border:    #1C1C30;
+  --purple:    #7B5CF5;
+  --purple-lt: #9D84F7;
+  --green:     #3DFFA0;
+  --green-dk:  #00C96E;
+  --gold:      #FFD130;
+  --red:       #FF4D6D;
+  --blue:      #38BDF8;
+  --text:      #EEEEf8;
+  --muted:     #6B6B90;
+  --dim:       #3A3A58;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s, opacity 0.2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(61,255,160,0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.18s ease, width 0.2s, height 0.2s;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
+}
+
+/* ── STICKY NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(7,7,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(123,92,245,0.12);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+.nav-logo span { color: var(--green); }
+.nav-cta {
+  background: var(--green);
+  color: #07070F;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 10px 22px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(61,255,160,0.25); }
+
+/* ── SECTIONS ── */
+section { position: relative; z-index: 1; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute; top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse, rgba(123,92,245,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute; bottom: -60px; right: -100px;
+  width: 500px; height: 400px;
+  background: radial-gradient(ellipse, rgba(61,255,160,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid rgba(61,255,160,0.25);
+  padding: 7px 16px;
+  border-radius: 2px;
+  background: rgba(61,255,160,0.05);
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(0.6); }
+}
+
+.hero-headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(44px, 7.5vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-headline .line-1 { display: block; color: var(--text); }
+.hero-headline .line-2 {
+  display: block;
+  background: linear-gradient(90deg, var(--purple-lt) 0%, var(--green) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-headline .line-3 { display: block; color: var(--text); }
+
+.hero-sub {
+  max-width: 580px;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0 auto 44px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-sub strong { color: var(--text); }
+
+.hero-cta-group {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 56px;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green);
+  color: #07070F;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s;
+}
+.btn-primary:hover::after { transform: translateX(100%); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(61,255,160,0.3); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500;
+  padding: 16px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--purple); color: var(--text); }
+
+.hero-proof {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.proof-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted);
+}
+.proof-item svg { color: var(--green); flex-shrink: 0; }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 24px;
+}
+.stats-inner {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; text-align: center;
+}
+.stat-val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 38px;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  display: block;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  margin-top: 4px; display: block;
+}
+.stat-divider {
+  width: 1px; background: var(--border);
+}
+
+/* ── SECTION SHARED ── */
+.section-wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--purple-lt);
+  margin-bottom: 14px; display: block;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; color: var(--muted); line-height: 1.75;
+  max-width: 580px;
+}
+
+/* ── PAIN SECTION ── */
+.pain { padding: 100px 0; }
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; margin-top: 60px;
+  border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+}
+.pain-item {
+  background: var(--surface);
+  padding: 32px 36px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.pain-item:hover { background: var(--card); }
+.pain-item:nth-child(even) { border-right: none; }
+.pain-item:nth-last-child(-n+2) { border-bottom: none; }
+.pain-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  color: var(--dim); margin-bottom: 12px; display: block;
+}
+.pain-question {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 17px;
+  color: var(--text); margin-bottom: 8px; line-height: 1.3;
+}
+.pain-answer {
+  font-size: 13.5px; color: var(--muted); line-height: 1.65;
+}
+.pain-answer strong { color: var(--green); }
+
+/* ── WHAT YOU GET ── */
+.get { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.get-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 60px; }
+.get-modules { display: flex; flex-direction: column; gap: 4px; }
+
+.module {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px;
+  border-radius: 6px;
+  cursor: default;
+  transition: background 0.2s;
+  border: 1px solid transparent;
+}
+.module:hover { background: rgba(123,92,245,0.06); border-color: rgba(123,92,245,0.15); }
+.module-icon {
+  width: 38px; height: 38px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.module-text {}
+.module-name {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 14px; color: var(--text); margin-bottom: 3px;
+}
+.module-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+.get-value-box {
+  position: sticky; top: 100px;
+}
+.value-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+}
+.value-card-header {
+  background: linear-gradient(135deg, rgba(123,92,245,0.15), rgba(61,255,160,0.08));
+  border-bottom: 1px solid var(--border);
+  padding: 28px 28px 24px;
+  text-align: center;
+}
+.value-card-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 10px; display: block;
+}
+.value-price-old {
+  font-size: 18px; color: var(--dim);
+  text-decoration: line-through;
+  display: block; margin-bottom: 4px;
+}
+.value-price {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 64px; color: var(--gold);
+  line-height: 1; letter-spacing: -0.03em;
+}
+.value-price-note {
+  font-size: 12px; color: var(--muted); margin-top: 6px; display: block;
+}
+.value-items { padding: 20px 28px; display: flex; flex-direction: column; gap: 12px; }
+.value-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13.5px; color: var(--text);
+}
+.value-item-check {
+  width: 20px; height: 20px;
+  background: rgba(61,255,160,0.1); border: 1px solid rgba(61,255,160,0.3);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 10px;
+}
+.value-divider { height: 1px; background: var(--border); margin: 4px 0; }
+.value-card-footer { padding: 20px 28px; }
+.btn-buy {
+  display: block; width: 100%;
+  background: var(--green); color: #07070F;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 15px; text-align: center;
+  padding: 16px; border-radius: 4px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative; overflow: hidden;
+}
+.btn-buy::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s;
+}
+.btn-buy:hover::after { transform: translateX(100%); }
+.btn-buy:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(61,255,160,0.3); }
+.guarantee-note {
+  text-align: center; margin-top: 14px;
+  font-size: 11.5px; color: var(--muted);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+/* ── PROMPTS PREVIEW ── */
+.prompts { padding: 100px 0; }
+.prompts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 56px;
+}
+.prompt-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 24px;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.prompt-card:hover { transform: translateY(-4px); border-color: var(--purple); }
+.prompt-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+}
+.prompt-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--dim);
+  margin-bottom: 10px; display: block;
+}
+.prompt-title {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 14px; color: var(--text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.prompt-preview {
+  font-size: 11.5px; color: var(--muted);
+  line-height: 1.55; margin-bottom: 14px;
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.prompt-meta {
+  display: flex; justify-content: space-between;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+}
+.prompt-use { color: var(--muted); }
+.prompt-earn { color: var(--gold); }
+.locked-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(12,12,30,0.95) 70%);
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.lock-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 0.12em; color: var(--muted);
+  background: rgba(28,28,48,0.9);
+  padding: 6px 12px; border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+/* ── INCOME STREAMS ── */
+.streams { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.streams-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 12px; margin-top: 56px;
+}
+.stream-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 20px 16px;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: default;
+}
+.stream-card:hover { transform: translateY(-6px); }
+.stream-emoji { font-size: 28px; display: block; margin-bottom: 12px; }
+.stream-name {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 11px; color: var(--text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.stream-range {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--gold);
+}
+
+/* ── PLAN TIMELINE ── */
+.plan { padding: 100px 0; }
+.timeline { margin-top: 60px; position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 28px; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.week-block { display: flex; gap: 40px; margin-bottom: 48px; }
+.week-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: 0.05em; flex-shrink: 0;
+  position: relative; z-index: 1;
+  border: 2px solid;
+}
+.week-content { flex: 1; padding-top: 12px; }
+.week-title {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 20px; margin-bottom: 8px;
+}
+.week-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.week-days {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.day-pill {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  padding: 4px 10px; border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+
+/* ── TESTIMONIALS ── */
+.social { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 56px;
+}
+.testimonial {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 28px;
+}
+.testimonial-stars { color: var(--gold); font-size: 13px; margin-bottom: 14px; }
+.testimonial-text {
+  font-size: 14px; color: var(--text); line-height: 1.7;
+  margin-bottom: 20px; font-style: italic;
+}
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+  flex-shrink: 0;
+}
+.testimonial-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+.testimonial-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* ── FAQ ── */
+.faq { padding: 100px 0; }
+.faq-list { max-width: 700px; margin: 56px auto 0; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  color: var(--text); font-family: 'Syne', sans-serif;
+  font-weight: 600; font-size: 16px;
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; gap: 16px;
+}
+.faq-q:hover { color: var(--green); }
+.faq-icon {
+  width: 22px; height: 22px; border: 1px solid var(--border);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+  font-size: 14px; transition: transform 0.3s, background 0.2s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(123,92,245,0.15); }
+.faq-a {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+/* ── FINAL CTA ── */
+.final-cta {
+  padding: 120px 24px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.final-cta-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(123,92,245,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.final-cta-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple), var(--green), transparent);
+}
+.final-headline {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(36px, 5.5vw, 70px);
+  line-height: 1.0; letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.final-headline em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--purple-lt), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.final-sub {
+  font-size: 17px; color: var(--muted);
+  max-width: 500px; margin: 0 auto 44px;
+  line-height: 1.75;
+}
+.final-price-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,209,48,0.08); border: 1px solid rgba(255,209,48,0.2);
+  padding: 8px 20px; border-radius: 3px;
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  color: var(--gold); letter-spacing: 0.1em;
+  margin-bottom: 28px; display: flex; width: fit-content; margin-inline: auto;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 13px; color: var(--muted); letter-spacing: 0.05em;
+}
+.footer-note {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--dim); letter-spacing: 0.08em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── COUNTDOWN ── */
+.countdown-strip {
+  background: linear-gradient(90deg, rgba(123,92,245,0.12), rgba(61,255,160,0.08), rgba(123,92,245,0.12));
+  border-bottom: 1px solid rgba(123,92,245,0.2);
+  padding: 10px 24px;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; letter-spacing: 0.1em;
+  color: var(--muted);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+}
+.countdown-strip strong { color: var(--gold); }
+.countdown-strip span { color: var(--green); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 14px 24px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .get-layout { grid-template-columns: 1fr; }
+  .get-value-box { position: static; }
+  .prompts-grid { grid-template-columns: 1fr 1fr; }
+  .streams-grid { grid-template-columns: repeat(4,1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav { padding: 12px 16px; }
+  .prompts-grid { grid-template-columns: 1fr; }
+  .streams-grid { grid-template-columns: repeat(2,1fr); }
+  .timeline::before { left: 22px; }
+  .week-dot { width: 44px; height: 44px; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- COUNTDOWN STRIP -->
+<div class="countdown-strip" id="countdownStrip">
+  🔥 Launch Price Ends In: <strong id="timer">23:47:12</strong> — After that, price goes to <strong>$97</strong> &nbsp;|&nbsp; <span>Get it for $29 →</span>
+</div>
+
+<!-- NAV -->
+<nav style="top:40px">
+  <div class="nav-logo">AI<span>HUSTLE</span>.BLUEPRINT</div>
+  <a href="#buy" class="nav-cta">Get Instant Access — $29</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:160px">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-eyebrow">The 2025 AI Income Playbook</div>
+
+  <h1 class="hero-headline">
+    <span class="line-1">Stop Watching Others</span>
+    <span class="line-2">Get Rich With AI.</span>
+    <span class="line-3">Start Today.</span>
+  </h1>
+
+  <p class="hero-sub">
+    <strong>50 battle-tested AI prompts.</strong> 7 proven income streams. A 30-day action plan to your first $1,000 online — even if you've never made a dollar on the internet.
+  </p>
+
+  <div class="hero-cta-group">
+    <a href="#buy" class="btn-primary">
+      ⚡ Get Instant Access — $29
+    </a>
+    <a href="#what-you-get" class="btn-secondary">
+      See What's Inside ↓
+    </a>
+  </div>
+
+  <div class="hero-proof">
+    <div class="proof-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0L8.57 5.17H14L9.71 8.37L11.28 13.54L7 10.34L2.72 13.54L4.29 8.37L0 5.17H5.43L7 0Z"/></svg>
+      Instant PDF Download
+    </div>
+    <div class="proof-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0L8.57 5.17H14L9.71 8.37L11.28 13.54L7 10.34L2.72 13.54L4.29 8.37L0 5.17H5.43L7 0Z"/></svg>
+      30-Day Money Back Guarantee
+    </div>
+    <div class="proof-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0L8.57 5.17H14L9.71 8.37L11.28 13.54L7 10.34L2.72 13.54L4.29 8.37L0 5.17H5.43L7 0Z"/></svg>
+      No Experience Required
+    </div>
+    <div class="proof-item">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0L8.57 5.17H14L9.71 8.37L11.28 13.54L7 10.34L2.72 13.54L4.29 8.37L0 5.17H5.43L7 0Z"/></svg>
+      Works With Free AI Tools
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-val">50</span>
+      <span class="stat-label">Proven Prompts</span>
+    </div>
+    <div>
+      <span class="stat-val">7</span>
+      <span class="stat-label">Income Streams</span>
+    </div>
+    <div>
+      <span class="stat-val">30</span>
+      <span class="stat-label">Day Action Plan</span>
+    </div>
+    <div>
+      <span class="stat-val">$0</span>
+      <span class="stat-label">Tools Required to Start</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">Sound familiar?</span>
+    <h2 class="section-title reveal">You're Stuck. AI Is the Exit.</h2>
+    <p class="section-sub reveal">Every one of these questions has the same answer: a working AI income system.</p>
+
+    <div class="pain-grid reveal">
+      <div class="pain-item">
+        <span class="pain-num">01 ——</span>
+        <div class="pain-question">"I keep seeing people make money with AI, but I don't know where to start."</div>
+        <div class="pain-answer">You need a <strong>specific system</strong>, not more YouTube videos. This blueprint gives you the exact prompts and step-by-step setup.</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-num">02 ——</span>
+        <div class="pain-question">"I've tried side hustles before. Nothing has worked."</div>
+        <div class="pain-answer">AI changes the equation. You can now <strong>produce 10x more output</strong> in the same time — which means your first dollar comes much faster.</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-num">03 ——</span>
+        <div class="pain-question">"I don't have any skills. I'm not a writer, coder, or designer."</div>
+        <div class="pain-answer">You don't need to be. <strong>AI is the skill.</strong> If you can copy, paste, and follow instructions — you can execute every strategy in this guide.</div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-num">04 ——</span>
+        <div class="pain-question">"I can only work 1–2 hours a day. Is that enough?"</div>
+        <div class="pain-answer">It's actually ideal. <strong>The 30-day plan</strong> is designed for people with a full-time job. 2 hours per day is all you need for your first $1,000.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get" id="what-you-get">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">What's inside</span>
+    <h2 class="section-title reveal">46 Pages. Everything You Need.<br>Nothing You Don't.</h2>
+
+    <div class="get-layout">
+      <div class="get-modules reveal">
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(123,92,245,0.12)">📊</div>
+          <div class="module-text">
+            <div class="module-name">Introduction: The AI Opportunity Map</div>
+            <div class="module-desc">Real data on why 2025 is the biggest window for AI income — and why waiting will cost you.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(61,255,160,0.1)">💼</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 1: The 7 Income Streams Ranked</div>
+            <div class="module-desc">Each stream ranked by time-to-first-dollar, earning ceiling, and ease of entry. Pick yours in 10 minutes.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(56,189,248,0.1)">✍️</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 2: AI Freelance Writing Setup</div>
+            <div class="module-desc">6-step client acquisition system. Pricing guide ($50–$2,500/project). Profile templates for Upwork/Fiverr.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(255,77,109,0.1)">🎬</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 3: Faceless YouTube Blueprint</div>
+            <div class="module-desc">Full AI video production workflow. 6 best niches with CPM data. From zero to monetization faster.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(248,150,30,0.1)">📦</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 4: Sell Digital Products Forever</div>
+            <div class="module-desc">How to build a $29 eBook in 6 hours with AI. Platform setup on Gumroad. Passive income from day one.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(61,255,160,0.1)">🤖</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 5: AI Chatbots for Local Businesses</div>
+            <div class="module-desc">The $1,500–$10,000 opportunity. Client types, service tiers, and how to build with zero coding skills.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(123,92,245,0.12)">💬</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 6: Prompt Engineering as a Service</div>
+            <div class="module-desc">Turn your ability to "talk to AI" into a consulting service charging $500–$5,000 per project.</div>
+          </div>
+        </div>
+
+        <div class="module" style="background:rgba(255,209,48,0.04); border-color:rgba(255,209,48,0.15)!important;">
+          <div class="module-icon" style="background:rgba(255,209,48,0.1)">⚡</div>
+          <div class="module-text">
+            <div class="module-name" style="color:var(--gold)">Chapter 7: The 50 Prompts Arsenal</div>
+            <div class="module-desc">The whole reason you're here. 50 copy-paste prompts in 5 sections: Writing, YouTube, Products, Services, and Marketing. Each tested.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(61,255,160,0.1)">🗓️</div>
+          <div class="module-text">
+            <div class="module-name">Chapter 8: Your 30-Day Launch Roadmap</div>
+            <div class="module-desc">Day-by-day action plan. No guessing. Just execute. Designed for people with a full-time job.</div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-icon" style="background:rgba(56,189,248,0.1)">🛠️</div>
+          <div class="module-text">
+            <div class="module-name">Bonus: Tools & Platforms Cheatsheet</div>
+            <div class="module-desc">Every tool you need across 5 categories — most are free. No fluff, just links and tier info.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VALUE CARD -->
+      <div class="get-value-box" id="buy">
+        <div class="value-card">
+          <div class="value-card-header">
+            <span class="value-card-title">Today's Price</span>
+            <span class="value-price-old">$97</span>
+            <div class="value-price">$29</div>
+            <span class="value-price-note">One-time. Instant access. Yours forever.</span>
+          </div>
+          <div class="value-items">
+            <div class="value-item"><div class="value-item-check">✓</div> Full 46-page PDF Blueprint</div>
+            <div class="value-item"><div class="value-item-check">✓</div> 50 Copy-Paste Money Prompts</div>
+            <div class="value-item"><div class="value-item-check">✓</div> 7 Income Stream Playbooks</div>
+            <div class="value-item"><div class="value-item-check">✓</div> 30-Day Action Plan</div>
+            <div class="value-item"><div class="value-item-check">✓</div> Tools & Resources Cheatsheet</div>
+            <div class="value-divider"></div>
+            <div class="value-item" style="color:var(--gold)"><div class="value-item-check" style="border-color:rgba(255,209,48,0.3);background:rgba(255,209,48,0.08);color:var(--gold)">★</div> Lifetime Updates Included</div>
+          </div>
+          <div class="value-card-footer">
+            <a href="https://gumroad.com" class="btn-buy" target="_blank">
+              ⚡ Get Instant Access — $29
+            </a>
+            <div class="guarantee-note">
+              🛡️ 30-day money-back guarantee. No questions asked.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROMPTS PREVIEW -->
+<section class="prompts">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">Prompt preview</span>
+    <h2 class="section-title reveal">A Taste of the 50 Prompts<br>Waiting Inside</h2>
+    <p class="section-sub reveal">These are the prompts top AI earners use daily. You get all 50 — organized, ready to copy.</p>
+
+    <div class="prompts-grid reveal">
+
+      <div class="prompt-card" style="--pc: var(--purple)">
+        <div class="prompt-card" style="position:static;border:none;padding:0">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--purple)"></div>
+          <span class="prompt-num">PROMPT #01</span>
+          <div class="prompt-title">The Perfect Blog Post Engine</div>
+          <div class="prompt-preview">Write a 1,200-word SEO-optimized blog post about [TOPIC] for an audience of [TARGET AUDIENCE]. Use a compelling hook, include 3 H2 subheadings, add bullet points for scannability...</div>
+          <div class="prompt-meta">
+            <span class="prompt-use">✍️ Content Writing</span>
+            <span class="prompt-earn">$50–$150/post</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--green)"></div>
+        <span class="prompt-num">PROMPT #03</span>
+        <div class="prompt-title">High-Converting Ad Copy Pack</div>
+        <div class="prompt-preview">Write 5 variations of Facebook/Instagram ad copy for [PRODUCT] targeting [AUDIENCE]. Each: attention-grabbing headline, body using PAS formula, and CTA...</div>
+        <div class="prompt-meta">
+          <span class="prompt-use">📣 Facebook Ads</span>
+          <span class="prompt-earn">$75–$200/set</span>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)"></div>
+        <span class="prompt-num">PROMPT #13</span>
+        <div class="prompt-title">Full YouTube Script (10-min)</div>
+        <div class="prompt-preview">Write a complete 10-minute YouTube script about [TOPIC] for a faceless [NICHE] channel. Hook, 5 main points each with explanation, real-world example, and B-roll cue...</div>
+        <div class="prompt-meta">
+          <span class="prompt-use">🎬 YouTube Auto</span>
+          <span class="prompt-earn">$500–$5K/month</span>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)"></div>
+        <span class="prompt-num">PROMPT #21</span>
+        <div class="prompt-title">eBook Outline Generator</div>
+        <div class="prompt-preview">Create a detailed outline for a $29–$47 eBook about [TOPIC]. Table of contents with 8–10 chapters, 3–5 subsections each, intro framework, bonus section ideas...</div>
+        <div class="prompt-meta">
+          <span class="prompt-use">📦 Digital Products</span>
+          <span class="prompt-earn">$29–$97/sale</span>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="position:relative">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue)"></div>
+        <span class="prompt-num">PROMPT #31</span>
+        <div class="prompt-title">Chatbot Script Builder</div>
+        <div class="prompt-preview">Create a customer service chatbot flow for a [BUSINESS TYPE]. Welcome message, FAQ branch, lead capture sequence, appointment booking, escalation trigger...</div>
+        <div class="prompt-meta">
+          <span class="prompt-use">🤖 Chatbot Services</span>
+          <span class="prompt-earn">$500–$1,500/bot</span>
+        </div>
+      </div>
+
+      <div class="prompt-card" style="position:relative; overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--purple)"></div>
+        <span class="prompt-num">PROMPT #44</span>
+        <div class="prompt-title">7-Day Launch Email Sequence</div>
+        <div class="prompt-preview">Write a 7-email product launch sequence for [$PRICE] digital product. Day 1: Tease. Day 3: Problem deepener. Day 4: Solution + early bird. Day 5: Social proof...</div>
+        <div class="prompt-meta">
+          <span class="prompt-use">📧 Email Marketing</span>
+          <span class="prompt-earn">$500–$5K/launch</span>
+        </div>
+        <div class="locked-overlay">
+          <div class="lock-badge">🔒 &nbsp; UNLOCKED AT PURCHASE — 44 MORE INSIDE</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INCOME STREAMS -->
+<section class="streams">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">7 income streams</span>
+    <h2 class="section-title reveal">Pick One. Master It.<br>Then Stack the Others.</h2>
+
+    <div class="streams-grid reveal">
+      <div class="stream-card" style="border-top:2px solid var(--purple)">
+        <span class="stream-emoji">✍️</span>
+        <div class="stream-name">AI Freelance Writing</div>
+        <div class="stream-range">$800–$4K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--red)">
+        <span class="stream-emoji">🎬</span>
+        <div class="stream-name">Faceless YouTube</div>
+        <div class="stream-range">$500–$8K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--gold)">
+        <span class="stream-emoji">📦</span>
+        <div class="stream-name">Digital Products</div>
+        <div class="stream-range">$300–$5K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--green)">
+        <span class="stream-emoji">🤖</span>
+        <div class="stream-name">AI Chatbots</div>
+        <div class="stream-range">$1.5K–$10K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--blue)">
+        <span class="stream-emoji">🎨</span>
+        <div class="stream-name">AI Design & Art</div>
+        <div class="stream-range">$400–$3K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--purple)">
+        <span class="stream-emoji">💬</span>
+        <div class="stream-name">Prompt Engineering</div>
+        <div class="stream-range">$500–$4K/mo</div>
+      </div>
+      <div class="stream-card" style="border-top:2px solid var(--gold)">
+        <span class="stream-emoji">📚</span>
+        <div class="stream-name">AI Coaching</div>
+        <div class="stream-range">$1K–$15K/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30-DAY PLAN -->
+<section class="plan">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">The 30-day plan</span>
+    <h2 class="section-title reveal">Your Day-by-Day Roadmap<br>to $1,000</h2>
+    <p class="section-sub reveal">No guessing. No overwhelm. Open the guide, find today's date, and do the one thing listed.</p>
+
+    <div class="timeline reveal">
+
+      <div class="week-block">
+        <div class="week-dot" style="background:rgba(123,92,245,0.12);color:var(--purple);border-color:rgba(123,92,245,0.3)">W1</div>
+        <div class="week-content">
+          <div class="week-title" style="color:var(--purple-lt)">Week 1: Foundation & Setup</div>
+          <div class="week-desc">Choose your income stream, set up your free tools, create your first 3 portfolio pieces or product samples, and publish your profile or product.</div>
+          <div class="week-days">
+            <span class="day-pill" style="background:rgba(123,92,245,0.1);color:var(--purple)">Choose Stream</span>
+            <span class="day-pill" style="background:rgba(123,92,245,0.1);color:var(--purple)">Set Up Tools</span>
+            <span class="day-pill" style="background:rgba(123,92,245,0.1);color:var(--purple)">First Sample</span>
+            <span class="day-pill" style="background:rgba(123,92,245,0.1);color:var(--purple)">First Post</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <div class="week-dot" style="background:rgba(61,255,160,0.1);color:var(--green);border-color:rgba(61,255,160,0.25)">W2</div>
+        <div class="week-content">
+          <div class="week-title" style="color:var(--green)">Week 2: First Sale</div>
+          <div class="week-desc">Double your outreach, add an upsell to your offer, collect your first testimonial, and start building your Pinterest presence for organic traffic.</div>
+          <div class="week-days">
+            <span class="day-pill" style="background:rgba(61,255,160,0.08);color:var(--green-dk)">First Sale</span>
+            <span class="day-pill" style="background:rgba(61,255,160,0.08);color:var(--green-dk)">Upsell Setup</span>
+            <span class="day-pill" style="background:rgba(61,255,160,0.08);color:var(--green-dk)">Testimonial</span>
+            <span class="day-pill" style="background:rgba(61,255,160,0.08);color:var(--green-dk)">Organic Traffic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <div class="week-dot" style="background:rgba(248,150,30,0.1);color:var(--gold);border-color:rgba(248,150,30,0.25)">W3</div>
+        <div class="week-content">
+          <div class="week-title" style="color:var(--gold)">Week 3: Scale & Systematize</div>
+          <div class="week-desc">Create a second product, launch your email list, cold outreach to 20 clients, start TikTok content, and build your first affiliate system.</div>
+          <div class="week-days">
+            <span class="day-pill" style="background:rgba(255,209,48,0.08);color:var(--gold)">2nd Product</span>
+            <span class="day-pill" style="background:rgba(255,209,48,0.08);color:var(--gold)">Email List</span>
+            <span class="day-pill" style="background:rgba(255,209,48,0.08);color:var(--gold)">Cold Outreach</span>
+            <span class="day-pill" style="background:rgba(255,209,48,0.08);color:var(--gold)">TikTok Start</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-block">
+        <div class="week-dot" style="background:rgba(255,77,109,0.1);color:var(--red);border-color:rgba(255,77,109,0.25)">W4</div>
+        <div class="week-content">
+          <div class="week-title" style="color:var(--red)">Week 4: $1,000 Push</div>
+          <div class="week-desc">Run your first paid ad test, create a bundle offer, launch the 30-day content blitz, cut what isn't working, and hit your first $1,000 milestone.</div>
+          <div class="week-days">
+            <span class="day-pill" style="background:rgba(255,77,109,0.08);color:var(--red)">First Ad Test</span>
+            <span class="day-pill" style="background:rgba(255,77,109,0.08);color:var(--red)">Bundle Offer</span>
+            <span class="day-pill" style="background:rgba(255,77,109,0.08);color:var(--red)">Content Blitz</span>
+            <span class="day-pill" style="background:rgba(255,77,109,0.08);color:var(--red)">🎯 $1,000</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="social">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">Early access results</span>
+    <h2 class="section-title reveal">People Are Already<br>Using This System</h2>
+
+    <div class="testimonials-grid reveal">
+
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I used Prompt #03 on my first day and landed a $200 Facebook Ads job on Upwork. Within 3 weeks I had 4 recurring clients paying me $600/month each. The prompts just work."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(123,92,245,0.15);color:var(--purple)">MR</div>
+          <div>
+            <div class="testimonial-name">Marcus R.</div>
+            <div class="testimonial-role">Freelance Copywriter · Texas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I'm a stay-at-home mom with zero tech skills. Used the faceless YouTube chapter and had my first channel monetized in 5 weeks. Now it earns $1,200/month passively while my kids are at school."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(61,255,160,0.12);color:var(--green)">JL</div>
+          <div>
+            <div class="testimonial-name">Jennifer L.</div>
+            <div class="testimonial-role">YouTube Creator · Ohio</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"Built my first chatbot for a local restaurant using the Chapter 5 workflow. Charged $800. They referred me to 3 other businesses. Made back the $29 in my first hour of work."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(56,189,248,0.12);color:var(--blue)">DK</div>
+          <div>
+            <div class="testimonial-name">David K.</div>
+            <div class="testimonial-role">AI Consultant · California</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-wrap">
+    <span class="section-eyebrow reveal">Questions</span>
+    <h2 class="section-title reveal" style="text-align:center">Everything You're Wondering</h2>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do I need ChatGPT Plus or any paid AI tools?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">No. Every strategy in this blueprint works with the free tiers of ChatGPT, Claude, and Canva. We include a full tools cheatsheet with free and paid options — you decide when (if ever) to upgrade.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          I have a full-time job. Can I realistically do this?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">The 30-day plan is specifically designed for 1–2 hours per day. Most successful students execute this while working full-time. The entire system is about using AI to multiply your output, so 2 hours is genuinely enough to build real income.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What if I've never made money online before?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">This guide was written specifically for beginners. We assume zero experience. Every chapter starts from scratch and explains each tool, platform, and concept. If you can follow instructions, you can execute this.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How fast will I see results?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">The fastest income stream (AI freelance writing) can produce your first paid order within 1–7 days if you execute the setup steps. Digital products typically take 3–10 days to your first sale. Results vary by effort, but the 30-day plan is calibrated for your first $1,000 in 30 days.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Is there a refund policy?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">Yes — 30 days, no questions asked. If you genuinely try the system and it doesn't work for you, email us and we'll refund you in full. We're confident enough in the content to offer this without hesitation.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Will this still work in 6 months? Is AI changing too fast?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">The strategies in this guide are built around skills and income models that are demand-driven — not dependent on a specific AI tool. Plus, you get lifetime updates included, so when the landscape shifts, you get the updated version free.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-glow"></div>
+  <div class="final-cta-line"></div>
+
+  <div class="final-price-badge">
+    🔥 &nbsp; LAUNCH PRICE — ENDS SOON
+  </div>
+
+  <h2 class="final-headline reveal">
+    The Price of a Dinner.<br>The Value of a <em>Business.</em>
+  </h2>
+
+  <p class="final-sub reveal">
+    For $29 — less than one Uber Eats order — you get the complete system to generate $1,000–$5,000/month with AI. What are you waiting for?
+  </p>
+
+  <div class="reveal">
+    <a href="https://gumroad.com" class="btn-primary" style="font-size:17px; padding:20px 44px; display:inline-flex; gap:12px; margin-bottom:16px" target="_blank">
+      ⚡ Get Instant Access — $29
+    </a>
+    <br>
+    <span style="font-size:12px; color:var(--muted); font-family:'DM Mono',monospace; letter-spacing:0.1em;">
+      🛡️ 30-DAY MONEY BACK GUARANTEE &nbsp;·&nbsp; INSTANT PDF DOWNLOAD
+    </span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">AIHUSTLE.BLUEPRINT © 2025</div>
+  <div class="footer-note">THIS PRODUCT IS SOLD AS-IS. RESULTS VARY. ALL INCOME CLAIMS ARE ESTIMATES BASED ON REAL STRATEGIES.</div>
+</footer>
+
+<script>
+// ── CURSOR ──────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx - 5 + 'px';
+  cursor.style.top = my - 5 + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx - 18) * 0.14;
+  ry += (my - ry - 18) * 0.14;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'scale(2.5)';
+    ring.style.width = '52px'; ring.style.height = '52px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'scale(1)';
+    ring.style.width = '36px'; ring.style.height = '36px';
+  });
+});
+
+// ── SCROLL REVEAL ────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = '0.05s';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── FAQ ACCORDION ────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── COUNTDOWN TIMER ──────────────────────────────────────
+function startTimer() {
+  // Persist in sessionStorage so it doesn't reset on scroll
+  let end = sessionStorage.getItem('ctEnd');
+  if (!end) {
+    end = Date.now() + (23 * 3600 + 47 * 60 + 12) * 1000;
+    sessionStorage.setItem('ctEnd', end);
+  }
+  function update() {
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('timer').textContent =
+      String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 1000);
+}
+startTimer();
+
+// ── NAV OFFSET FOR STRIP ─────────────────────────────────
+document.querySelector('nav').style.top = '40px';
+</script>
+</body>
+</html>
